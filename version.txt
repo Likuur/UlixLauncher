@@ -1,4 +1,2 @@
 Link:
-Version: 1.0.4 BETA-TEST 
-Test UPDATE FILE
-12345
+Version: 1.0.4 BETA-TEST
