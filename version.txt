@@ -1,2 +1,2 @@
 Link:
-Version: 1.0.4 BETA-TEST
+Version: 1.0.5 BETA-TEST
