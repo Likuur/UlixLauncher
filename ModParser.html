@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UlixLauncher Help</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mod-item {
+        position: relative;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #181818, #2E7D32);
+        padding: 15px;
+        border-radius: 10px;
+        overflow: hidden; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+    .mod-item img {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+
+    .mod-info {
+        flex-grow: 1;
+    }
+
+
+    .install-button {
+        background-color: #2E7D32;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .install-button:hover {
+        background-color: #1B5E20;
+    }
+
+    h2 {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s;
+        margin: 0;
+    }
+
+    .mod-item:hover {
+        transform: scale(1.05);
+    }
+    </style>
+</head>
+<body>
+    <div class="mod-list" id="mod-list"></div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const modList = document.getElementById('mod-list');
+    modList.innerHTML = '';
+    for (let i = 1; i <= 1163; i++) {
+        const url = `https://cors-anywhere.herokuapp.com/https://ru-minecraft.ru/mody-minecraft/page/${i}`;
+        try {
+            const response = await fetch(url, { redirect: 'follow' });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const modNodes = doc.querySelectorAll("div#dle-content div.news__item");
+
+            modNodes.forEach(mod => {
+                const modTitleElement = mod.querySelector("h2.news__title a");
+                const fullModName = modTitleElement.innerText.trim();
+                const modName = fullModName.split('-')[0].trim();
+                const modVersionMatch = fullModName.match(/\[(.*?)\]/);
+                const modVersion = modVersionMatch ? modVersionMatch[1] : 'Неизвестно';
+
+                const modIconElement = mod.querySelector("div.news__content a img");
+                const modIcon = modIconElement ? modIconElement.src : 'default-icon.png';
+
+                const modItem = document.createElement('div');
+                modItem.className = 'mod-item'; 
+
+                const modIconImg = document.createElement('img');
+                modIconImg.src = modIcon;
+
+                const modInfo = document.createElement('div');
+                modInfo.className = 'mod-info';
+
+                const modTitle = document.createElement('h2');
+                modTitle.textContent = modName;
+
+                const modVersionElement = document.createElement('div');
+                modVersionElement.textContent = `Версия: ${modVersion}`;
+
+                const installButton = document.createElement('button');
+                installButton.addEventListener('click', () => {
+    const modName = modTitle.textContent;
+    const modVersion = modVersionElement.textContent.replace('Версия: ', '').trim();
+
+    const modLinkElement = modTitleElement;
+    const modLink = modLinkElement.href;
+
+    const message = `installMod:${modName};${modVersion};${modLink}`;
+
+    window.chrome.webview.postMessage(message);
+});
+
+                modInfo.appendChild(modTitle);
+                modInfo.appendChild(modVersionElement);
+                modItem.appendChild(modIconImg);
+                modItem.appendChild(modInfo);
+                modItem.appendChild(installButton);
+
+                modList.appendChild(modItem);
+            });
+        } catch (error) {
+            console.error(`Ошибка при загрузке модов: ${error.message}`);
+        }
+    }
+});
+    </script>
+</body>
+</html>
