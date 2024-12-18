@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 modVersionElement.textContent = `Версия: ${modVersion}`;
 
                 const installButton = document.createElement('button');
+                installButton.className = 'install-button';
+                installButton.textContent = 'Установить';
                 installButton.addEventListener('click', () => {
     const modName = modTitle.textContent;
     const modVersion = modVersionElement.textContent.replace('Версия: ', '').trim();
