@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UlixLauncher Help</title>
+    <style>
+        body {
+            background-color: #000; /* Черный фон страницы */
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px; /* Отступы для удобства */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрирование содержимого */
+        }
+
+        .section {
+            margin-bottom: 30px; /* Отступ между секциями */
+            width: 100%; /* Занять всю ширину */
+            max-width: 600px; /* Максимальная ширина */
+        }
+
+        .help-item {
+            position: relative; /* Для позиционирования псевдоэлемента */
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #181818, #2E7D32); /* Градиент для полей с вопросами */
+            padding: 30px; /* Увеличиваем отступы для большей высоты */
+            border-radius: 10px;
+            overflow: hidden; /* Скрыть псевдоэлемент, выходящий за границы */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для эффекта глубины */
+            transition: transform 0.3s; /* Плавная анимация при увеличении */
+            text-align: left; /* Выравнивание текста по правому краю */
+        }
+
+        .help-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #2E7D32, #181818); /* Новый градиент для псевдоэлемента */
+            opacity: 0; /* Начальная прозрачность */
+            transition: opacity 0.5s ease; /* Плавная анимация прозрачности */
+            border-radius: 10px; /* Скругление углов */
+            z-index: 0; /* Псевдоэлемент под текстом */
+        }
+
+        .help-item:hover {
+            transform: scale(1.05); /* Увеличение при наведении */
+        }
+
+        .help-item:hover::before {
+            opacity: 1; /* Полная непрозрачность при наведении */
+        }
+
+        h2, p {
+            position: relative; /* Позиционирование текста */
+            z-index: 1; /* Текст над псевдоэлементом */
+            transition: color 0.3s; /* Анимация цвета текста */
+            margin: 0; /* Убираем отступы у заголовка и параграфа */
+        }
+
+        .help-item:hover h2,
+        .help-item:hover p {
+            color: #e0e0e0; /* Изменение цвета текста при наведении */
+        }
+
+        h3 {
+            margin: 20px 0; /* Отступы для заголовков секций */
+            text-align: center; /* Центрирование заголовков секций */
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h3>--- Лаунчер ---</h3>
+        <div class="help-item">
+            <h2>Как поставить ник?</h2>
+            <p>Чтобы поставить никнейм игрока, зайдите в настройки затем впишите нужный ник в поле MultiAccount и нажмите создать, после выберите ваш аккаунт в списке аккаунтов</p>
+        </div>
+        <div class="help-item">
+            <h2>Как установить Java?</h2>
+            <p>Для установки Java, скачайте последнюю версию с официального сайта Oracle и следуйте инструкциям установщика</p>
+        </div>
+        <div class="help-item">
+            <h2>Ошибка сети. Что делать?</h2>
+            <p>Проверьте своё подключение к сети. Если оно присутствует, попробуйте войти на сайт Mojang, возможно, их страница была заблокированна.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>--- Игра ---</h3>
+        <div class="help-item">
+            <h2>Как установить скин?</h2>
+            <p>Чтобы установить скин игрока, перейдите во вкладку "скины" и войдите через Microsoft аккаунт или укажите UUID</p>
+        </div>
+    </div>
+</body>
+</html>
