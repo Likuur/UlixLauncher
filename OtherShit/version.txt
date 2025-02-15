@@ -1,2 +1,2 @@
-Link:
+Link: https://raw.githubusercontent.com/Likuur/UlixLauncher/refs/heads/master/OtherShit/Updater.zip
 Version: 1.0.6 BETA-TEST
