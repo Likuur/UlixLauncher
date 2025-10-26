@@ -5,72 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UlixLauncher Help</title>
     <style>
-        body {
-            background-color: #000; /* Черный фон страницы */
+        body
+        {
+            background-color: #000;
             color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px; /* Отступы для удобства */
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Центрирование содержимого */
+            align-items: center;
         }
 
-        .section {
-            margin-bottom: 30px; /* Отступ между секциями */
-            width: 100%; /* Занять всю ширину */
-            max-width: 600px; /* Максимальная ширина */
+        .section
+        {
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 600px;
         }
 
-        .help-item {
-            position: relative; /* Для позиционирования псевдоэлемента */
+        .help-item
+        {
+            position: relative;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #181818, #2E7D32); /* Градиент для полей с вопросами */
-            padding: 30px; /* Увеличиваем отступы для большей высоты */
+            background: linear-gradient(135deg, #181818, #2E7D32);
+            padding: 30px;
             border-radius: 10px;
-            overflow: hidden; /* Скрыть псевдоэлемент, выходящий за границы */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для эффекта глубины */
-            transition: transform 0.3s; /* Плавная анимация при увеличении */
-            text-align: left; /* Выравнивание текста по правому краю */
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            text-align: left;
         }
 
-        .help-item::before {
+        .help-item::before
+        {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, #2E7D32, #181818); /* Новый градиент для псевдоэлемента */
-            opacity: 0; /* Начальная прозрачность */
-            transition: opacity 0.5s ease; /* Плавная анимация прозрачности */
-            border-radius: 10px; /* Скругление углов */
-            z-index: 0; /* Псевдоэлемент под текстом */
+            background: linear-gradient(135deg, #2E7D32, #181818);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 10px;
+            z-index: 0;
         }
 
-        .help-item:hover {
-            transform: scale(1.05); /* Увеличение при наведении */
+        .help-item:hover
+        {
+            transform: scale(1.05);
         }
 
-        .help-item:hover::before {
-            opacity: 1; /* Полная непрозрачность при наведении */
+        .help-item:hover::before
+        {
+            opacity: 1;
         }
 
-        h2, p {
-            position: relative; /* Позиционирование текста */
-            z-index: 1; /* Текст над псевдоэлементом */
-            transition: color 0.3s; /* Анимация цвета текста */
-            margin: 0; /* Убираем отступы у заголовка и параграфа */
+        h2, p
+        {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
+            margin: 0;
         }
 
         .help-item:hover h2,
-        .help-item:hover p {
-            color: #e0e0e0; /* Изменение цвета текста при наведении */
+        .help-item:hover p
+        {
+            color: #e0e0e0;
         }
 
-        h3 {
-            margin: 20px 0; /* Отступы для заголовков секций */
-            text-align: center; /* Центрирование заголовков секций */
+        h3
+        {
+            margin: 20px 0;
+            text-align: center;
         }
     </style>
 </head>
@@ -99,4 +108,5 @@
         </div>
     </div>
 </body>
+
 </html>
